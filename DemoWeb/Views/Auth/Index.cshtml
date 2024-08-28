@@ -1,0 +1,42 @@
+﻿@using SimplePOSWeb.ViewModel.Auth
+@model LoginVM
+@{
+    ViewData["Title"] = "Login";
+    Layout = "_AuthLayout";
+}
+<div class="card mb-3">
+    <div class="card-body">
+        <div class="pt-4 pb-2">
+            <h5 class="card-title text-center pb-0 fs-4">Login to Your Account</h5>
+            <p class="text-center small">Enter your username & password to login</p>
+        </div>
+        @using (Html.BeginForm("Login", "Auth", FormMethod.Post, new { @class = "row g-3 needs-validation", novalidate = "true" }))
+        {
+            <div class="col-12">
+                @Html.LabelFor(m => m.Username, new { @class = "form-label" })
+                <div class="input-group has-validation">
+                    @Html.TextBoxFor(m => m.Username, new { @class = "form-control", @required = "required" })
+                    @Html.ValidationMessageFor(m => m.Username, "", new { @class = "invalid-feedback" })
+                </div>
+            </div>
+
+            <div class="col-12">
+                @Html.LabelFor(m => m.Password, new { @class = "form-label" })
+                <div class="input-group has-validation">
+                    @Html.PasswordFor(m => m.Password, new { @class = "form-control", @required = "required" })
+                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "invalid-feedback" })
+                </div>
+            </div>
+            <div class="col-12">
+                <br />
+            </div>
+            <div class="col-12">
+                <button class="btn btn-primary w-100" type="submit">Login</button>
+            </div>
+
+            <div class="col-12">
+                <br />
+            </div>
+        }
+    </div>
+</div>
